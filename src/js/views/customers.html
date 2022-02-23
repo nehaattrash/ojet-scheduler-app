@@ -1,0 +1,98 @@
+<div class="oj-hybrid-padding">
+  <h1>Customers</h1>
+  <div>
+    <oj-dialog id="UpdateCustomerDialog" dialog-title="New Customer" aria-describedby="desc">
+      <div slot="body">
+        <oj-input-text id="custIdUpdate" value="{{customerIdUpdate}}" readonly="true" label-hint="Customer Id"
+          label-edge="inside">
+        </oj-input-text>
+        <br><br>
+        <oj-input-text id="custNameUpdate" value="{{customerNameUpdate}}" label-hint="Customer Name"
+          label-edge="inside">
+        </oj-input-text>
+        <br><br>
+        <oj-input-text id="custEmailUpdate" value="{{customerEmailUpdate}}" label-hint="Customer Email"
+          label-edge="inside">
+        </oj-input-text>
+        <br><br>
+        <oj-input-text id="custDescUpdate" value="{{customerDescriptionUpdate}}" label-hint="Customer Description"
+          label-edge="inside">
+        </oj-input-text>
+        <br><br>
+        <oj-input-text id="custPhoneUpdate" value="{{customerPhoneUpdate}}" label-hint="Customer Phone"
+          label-edge="inside">
+        </oj-input-text>
+        <br><br>
+        <oj-input-text id="custAddressUpdate" value="{{customerAddressUpdate}}" label-hint="Customer Address"
+          label-edge="inside">
+        </oj-input-text>
+        <br><br>
+        <oj-input-text id="custWebsiteUpdate" value="{{customerWebsiteUpdate}}" label-hint="Customer Website"
+          label-edge="inside">
+        </oj-input-text>
+      </div>
+      <div slot="footer">
+        <oj-button id="okButton" on-oj-action="[[saveUpdate]]">Update</oj-button>
+        <oj-button id="okButton" on-oj-action="[[cancelUpdate]]">Cancel</oj-button>
+      </div>
+    </oj-dialog>
+    <oj-dialog id="AddCustomerDialog" dialog-title="New Customer" aria-describedby="desc">
+      <div slot="body">
+        <oj-input-text id="custId" value="{{customerId}}" label-hint="Customer Id" label-edge="inside">
+        </oj-input-text>
+        <br><br>
+        <oj-input-text id="custName" value="{{customerName}}" label-hint="Customer Name" label-edge="inside">
+        </oj-input-text>
+        <br><br>
+        <oj-input-text id="custEmail" value="{{customerEmail}}"
+         label-hint="Customer Email" label-edge="inside">
+        </oj-input-text>
+        <br><br>
+        <oj-input-text id="custDesc" value="{{customerDescription}}" label-hint="Customer Description"
+          label-edge="inside">
+        </oj-input-text>
+        <br><br>
+        <oj-input-text id="custPhone" value="{{customerPhone}}" label-hint="Customer Phone" label-edge="inside">
+        </oj-input-text>
+        <br><br>
+        <oj-input-text id="custAddress" value="{{customerAddress}}" label-hint="Customer Address" label-edge="inside">
+        </oj-input-text>
+        <br><br>
+        <oj-input-text id="custWebsite" value="{{customerWebsite}}" label-hint="Customer Website" label-edge="inside">
+        </oj-input-text>
+      </div>
+      <div slot="footer">
+        <oj-button id="okButton" on-oj-action="[[saveCustomer]]">Save</oj-button>
+        <oj-button id="okButton" on-oj-action="[[cancelCustomer]]">Cancel</oj-button>
+      </div>
+    </oj-dialog>
+    <oj-button id="buttonOpener" on-oj-action="[[addCustomer]]">Add Customer</oj-button>
+    <oj-dialog id="DeleteCustomerDialog" dialog-title="Delete Customer" aria-describedby="desc">
+      <div slot="body">
+        Are you sure you want to delete
+      </div>
+      <div slot="footer">
+        <oj-button id="okButton" on-oj-action="[[okDelete]]">Delete</oj-button>
+        <oj-button id="okButton" on-oj-action="[[cancelDelete]]">Cancel</oj-button>
+      </div>
+      <oj-messages id="oj-messages-id" class="oj-color-invert" messages="[[messagesDataprovider]]"
+        display="notification" display-options.category="none" position='{"my":{"vertical" :"top", "horizontal": "end"}, 
+                            "at": {"vertical": "top", "horizontal": "end"},
+                            "of": "window"}'></oj-messages>
+    </oj-dialog>
+    <oj-input-text id="filter" class="oj-form-control-max-width-md" label-hint="Filter" label-edge="inside"
+      placeholder="Type to filter" on-raw-value-changed="[[handleValueChanged]]" value="{{filter}}" clear-icon="always">
+    </oj-input-text>
+    <oj-table id="table" style="width: 100%;" aria-label="Departments Table" data="[[dataprovider]]"
+      scroll-policy="loadMoreOnScroll" columns-default.sortable="disabled" columns="{{columnArray}}"
+      on-selected-changed="[[selectedChangedListener]]" selection-mode='{"row":"single"}' class="demo-table-container">
+      <template slot="cellTemplate1" data-oj-as="cell">
+        <oj-button id="buttonOpener" on-oj-action="[[updateCustomer]]">Update</oj-button>
+        <!-- <oj-button id="buttonOpener" on-oj-action="[[deleteCustomer]]" chroming="borderless">Delete</oj-button> -->
+      </template>
+      <template slot="cellTemplate2" data-oj-as="cell">
+        <oj-button id="buttonOpener" on-oj-action="[[deleteCustomer]]">Delete</oj-button>
+      </template>
+    </oj-table>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<!--
+ Copyright (c) 2014, 2021, Oracle and/or its affiliates.
+ Licensed under The Universal Permissive License (UPL), Version 1.0
+ as shown at https://oss.oracle.com/licenses/upl/
+ -->
+<div class="oj-hybrid-padding">
+  <h1>Customers</h1>
+  <div>
+    <oj-input-text id="filter" class="oj-form-control-max-width-md" label-hint="Filter" label-edge="inside"
+      placeholder="Type to filter" on-raw-value-changed="[[handleValueChanged]]" value="{{filter}}" clear-icon="always">
+    </oj-input-text>
+    <oj-table id="table" aria-label="Departments Table" data="[[dataprovider]]" scroll-policy="loadMoreOnScroll"
+      columns-default.sortable="disabled" columns="{{columnArray}}" class="demo-table-container"></oj-table>
+  </div>
+</div>

@@ -1,0 +1,100 @@
+<!--
+ Copyright (c) 2014, 2021, Oracle and/or its affiliates.
+ Licensed under The Universal Permissive License (UPL), Version 1.0
+ as shown at https://oss.oracle.com/licenses/upl/
+ -->
+<div class="oj-hybrid-padding">
+  <h1>Services </h1>
+  <div>
+    <oj-dialog id="DeleteServiceDialog" dialog-title="Delete Service" aria-describedby="desc">
+      <div slot="body">
+         Are you sure you want to delete 
+      </div>
+      <div slot="footer">
+        <oj-button id="okButton" on-oj-action="[[okDelete]]">Delete</oj-button>
+        <oj-button id="okButton" on-oj-action="[[cancelDelete]]">Cancel</oj-button>
+      </div>
+    </oj-dialog>
+    <oj-dialog id="UpdateServiceDialog" dialog-title="Update Service" aria-describedby="desc">
+      <div slot="body">
+          <oj-input-text
+          id="servNameUpdate"
+          value="{{serviceNameUpdate}}"
+          label-hint="Service Name"
+          label-edge="inside"
+          readonly="true">
+          </oj-input-text>
+          <br><br>
+          <oj-input-text
+          id="ServDescUpdate"
+          value="{{serviceDescriptionUpdate}}"
+          label-hint="Service Description"
+          label-edge="inside">
+        </oj-input-text>
+      </div>
+      <div slot="footer">
+        <oj-button id="okButton" on-oj-action="[[saveUpdate]]">Save</oj-button>
+        <oj-button id="okButton" on-oj-action="[[cancelUpdate]]">Cancel</oj-button>
+      </div>
+    </oj-dialog>
+    <oj-dialog id="modalDialog1" dialog-title="New Service" aria-describedby="desc">
+      <div slot="body">
+          <oj-input-text
+          id="servName"
+          value="{{serviceName}}"
+          label-hint="Service Name"
+          label-edge="inside">
+          </oj-input-text>
+          <br><br>
+          <oj-input-text
+          id="ServDesc"
+          value="{{serviceDescription}}"
+          label-hint="Service Description"
+          label-edge="inside">
+        </oj-input-text>
+      </div>
+      <div slot="footer">
+        <oj-button id="okButton" on-oj-action="[[save]]">Save</oj-button>
+        <oj-button id="okButton" on-oj-action="[[cancel]]">Cancel</oj-button>
+      </div>
+    </oj-dialog>
+    <oj-button id="buttonOpener" on-oj-action="[[open]]">Add Service</oj-button>
+    <oj-messages
+    id="oj-messages-id"
+    class="oj-color-invert"
+    messages="[[messagesDataprovider]]"
+    display="notification"
+    display-options.category="none"
+    position='{"my":{"vertical" :"top", "horizontal": "end"}, 
+                          "at": {"vertical": "top", "horizontal": "end"},
+                          "of": "window"}'></oj-messages>
+    <oj-table
+            id="table"
+            aria-label="Departments Table"
+            data="[[dataprovider]]"
+            dnd='{"reorder": {"columns": "enabled"}}'
+            scroll-policy="loadMoreOnScroll"
+            scroll-policy-options='{"fetchSize": 10}'
+            on-selected-changed="[[selectedChangedListener]]"
+            selection-mode='{"row":"single"}'
+            columns='[{"headerText": "Actions", 
+                        "field": "ServiceName",
+                        "headerClassName": "oj-sm-only-hide",
+                        "className": "oj-sm-only-hide",
+                        "resizable": "enabled","template":"cellTemplate"},
+                        {"headerText": "Service Name", 
+                        "field": "ServiceName",
+                        "headerClassName": "oj-sm-only-hide",
+                        "className": "oj-sm-only-hide",
+                        "resizable": "enabled"},
+                      {"headerText": "Service Description", 
+                        "field": "ServiceDescription",
+                        "resizable": "enabled"}]'
+                      class="demo-table-container">
+            <template slot="cellTemplate" data-oj-as="cell">
+              <oj-button id="buttonOpener" on-oj-action="[[openUpdate]]">Update Service</oj-button>
+              <oj-button id="buttonOpener" on-oj-action="[[openDelete]]">Delete Service</oj-button>
+            </template>
+
+  </div>
+</div>

@@ -1,0 +1,110 @@
+<div class="oj-hybrid-padding">
+  <h1>Users</h1>
+  <div>
+    <oj-dialog id="AddUserDialog" dialog-title="New User" aria-describedby="desc">
+      <div slot="body">
+        <oj-input-text id="userName" value="{{userName}}" label-hint="User Name" label-edge="inside">
+        </oj-input-text>
+        <br><br>
+        <oj-input-text id="userDisplayName" value="{{userDisplayName}}" label-hint="User Display Name"
+          label-edge="inside">
+        </oj-input-text>
+        <br><br>
+        <oj-input-password
+        id="password"
+        value="{{userPassword}}"
+        label-hint="Password"
+        mask-icon="visible"></oj-input-password>
+        <br><br>
+        <oj-select-single
+              id="userType"
+              label-hint="User Type"
+              label-edge="inside"
+              class="oj-form-control-max-width-md"
+              data="[[usersDP]]"
+              value="{{userType}}">User Type</oj-select-single>
+         <br><br>
+         <oj-checkboxset
+              id="userActive"
+              label-hint="License Agreement"
+              label-edge="inside"
+              value="{{userActive}}">
+              <oj-option value="Y">User Active</oj-option>
+            </oj-checkboxset>
+      </div>
+      <div slot="footer">
+        <oj-button id="okButton" on-oj-action="[[saveUser]]">Save</oj-button>
+        <oj-button id="okButton" on-oj-action="[[cancelUser]]">Cancel</oj-button>
+      </div>
+    </oj-dialog>
+    <oj-dialog id="DeleteUserDialog" dialog-title="Delete User" aria-describedby="desc">
+      <div slot="body">
+          Are you sure you want to delete user ?
+      </div>
+      <div slot="footer">
+        <oj-button id="okButton" on-oj-action="[[okDelete]]">Delete</oj-button>
+        <oj-button id="okButton" on-oj-action="[[cancelDelete]]">Cancel</oj-button>
+      </div>
+    </oj-dialog>
+    <oj-dialog id="UpdateUserDialog" dialog-title="Update User" aria-describedby="desc">
+      <div slot="body">
+        <oj-input-text id="userNameUpdate" readonly="true" value="{{userNameUpdate}}" label-hint="User Name" label-edge="inside">
+        </oj-input-text>
+        <br><br>
+        <oj-input-text id="userDisplayNameUpdate" value="{{userDisplayNameUpdate}}" label-hint="User Display Name"
+          label-edge="inside">
+        </oj-input-text>
+        <br><br>
+        <oj-input-password
+        id="passwordUpdate"
+        value="{{userPasswordUpdate}}"
+        label-hint="Password"
+        mask-icon="visible"></oj-input-password>
+      </div>
+      <div slot="footer">
+        <oj-button id="okButton" on-oj-action="[[updateUser]]">Save</oj-button>
+        <oj-button id="okButton" on-oj-action="[[cancelUpdate]]">Cancel</oj-button>
+      </div>
+    </oj-dialog>
+    <oj-dialog id="DeleteUserDialog" dialog-title="Delete User" aria-describedby="desc">
+      <div slot="body">
+          Are you sure you want to delete user ?
+      </div>
+      <div slot="footer">
+        <oj-button id="okButton" on-oj-action="[[okDelete]]">Delete</oj-button>
+        <oj-button id="okButton" on-oj-action="[[cancelDelete]]">Cancel</oj-button>
+      </div>
+    </oj-dialog>
+    <oj-messages
+    id="oj-messages-id"
+    class="oj-color-invert"
+    messages="[[messagesDataprovider]]"
+    display="notification"
+    display-options.category="none"
+    position='{"my":{"vertical" :"top", "horizontal": "end"}, 
+                          "at": {"vertical": "top", "horizontal": "end"},
+                          "of": "window"}'></oj-messages>
+    <oj-button id="buttonOpener" on-oj-action="[[openUser]]">Add User</oj-button>
+    <oj-table id="table" style="width: 100%;" aria-label="Users Table" data="[[pagingDataProvider]]"
+    on-selected-changed="[[selectedChangedListener]]"
+    selection-mode='{"row":"single"}'
+      columns='[
+      {"headerText": "Actions", 
+                        "field": "userName",
+                        "headerClassName": "oj-sm-only-hide",
+                        "className": "oj-sm-only-hide",
+                        "resizable": "enabled","template":"cellTemplate"},
+      {"headerText": "Username", "field": "userName", "headerClassName": "tableHeaderStyle"},
+                             {"headerText": "Display Name", "field": "userDisplayName", "headerClassName": "tableHeaderStyle"},
+                             {"headerText": "User Type", "field": "userType", "headerClassName": "tableHeaderStyle"},
+                             {"headerText": "User Active", "field": "userActive", "headerClassName": "tableHeaderStyle"}]' class="oj-sm-width-full">
+      <oj-paging-control id="paging" data="[[pagingDataProvider]]" page-size="1" slot="bottom">
+      </oj-paging-control>
+      <template slot="cellTemplate" data-oj-as="cell">
+        <oj-button id="buttonOpener" on-oj-action="[[updateUsers]]">Update User</oj-button>
+        <oj-button id="buttonOpener" on-oj-action="[[deleteUser]]">Delete User</oj-button>
+      </template>
+    </oj-table>
+
+  </div>
+</div>
