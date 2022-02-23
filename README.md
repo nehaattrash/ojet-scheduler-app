@@ -1,1 +1,1 @@
-# ojet-scheduler-app hey there
+# ojet-scheduler-app
